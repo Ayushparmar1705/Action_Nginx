@@ -22,7 +22,7 @@ jobs:
           TARGET: ${{ secrets.TARGET_DIR }}
 
       - name: Execute Commands on EC2
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
