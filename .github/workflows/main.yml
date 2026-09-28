@@ -1,14 +1,18 @@
 name: Deploy Website to EC2 (Nginx)
+
 on:
   push:
     branches:
       - main
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+
       - name: Upload Files to EC2
         uses: easingthemes/ssh-deploy@main
         env:
@@ -16,6 +20,7 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
+
       - name: Execute Commands on EC2
         uses: appleboy/ssh-action@v1.0.3
         with:
